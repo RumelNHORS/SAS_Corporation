@@ -29,3 +29,15 @@ class BusinessPartnerRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroy
     serializer_class = sas_serializers.BusinessPartnerSerializer
 
 
+# List all project or create new project
+class ProjectListCreateAPIView(generics.ListCreateAPIView):
+    queryset = sas_models.Projects.objects.all()
+    serializer_class = sas_serializers.ProjectSerializer
+
+
+# Retrive, update or Delete Specific Project ny ID
+class ProjectRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = sas_models.Projects.objects.all()
+    serializer_class = sas_serializers.ProjectSerializer
+
+
