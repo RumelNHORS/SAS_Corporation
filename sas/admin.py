@@ -54,4 +54,6 @@ class SasGalleryAdmin(admin.ModelAdmin):
         return 'No Image'
     
     image_tag.short_description = 'Gallery Image'
+
+admin.site.register(sas_models.WebPrimaryColor)
     
