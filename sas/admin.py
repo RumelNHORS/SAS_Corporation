@@ -31,3 +31,15 @@ class BusinessPartnerAdmin(admin.ModelAdmin):
         return 'No Image'
     
     image_tag.short_description = 'Image'
+
+
+@admin.register(sas_models.Projects)
+class ProjectsAdmin(admin.ModelAdmin):
+    list_display = ['project_name', 'description', 'project_link', 'image_tag']
+
+    def image_tag(self, obj):
+        if obj.project_image:
+            return mark_safe(f'<img src="{obj.project_image.url}" width="50" height="50" />')
+        return 'No Image'
+    
+    image_tag.short_description = 'Project Image'
