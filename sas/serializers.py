@@ -20,3 +20,8 @@ class ProjectSerializer(serializers.ModelSerializer):
     class Meta:
         model = sas_models.Projects
         fields = ['id', 'project_name', 'project_link', 'description', 'project_image']
+
+class SasGallerySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = sas_models.SasGallery
+        fields = ['id', 'title', 'picture']

@@ -41,3 +41,13 @@ class ProjectRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView)
     serializer_class = sas_serializers.ProjectSerializer
 
 
+# List all SasGallery items or create a new one
+class SasGalleryListCreateAPIView(generics.ListCreateAPIView):
+    queryset = sas_models.SasGallery.objects.all()
+    serializer_class = sas_serializers.SasGallerySerializer
+
+
+# Retrieve, update, or delete a specific SasGallery item by ID
+class SasGalleryRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = sas_models.SasGallery.objects.all()
+    serializer_class = sas_serializers.SasGallerySerializer

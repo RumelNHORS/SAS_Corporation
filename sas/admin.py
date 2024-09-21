@@ -43,3 +43,15 @@ class ProjectsAdmin(admin.ModelAdmin):
         return 'No Image'
     
     image_tag.short_description = 'Project Image'
+
+@admin.register(sas_models.SasGallery)
+class SasGalleryAdmin(admin.ModelAdmin):
+    list_display = ['title', 'picture', 'image_tag']
+    
+    def image_tag(self, obj):
+        if obj.picture:
+            return mark_safe(f'<img src="{obj.picture.url}" width="50" height="50" />')
+        return 'No Image'
+    
+    image_tag.short_description = 'Gallery Image'
+    

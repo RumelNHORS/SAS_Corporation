@@ -30,4 +30,11 @@ class Projects(models.Model):
     description = models.TextField()
     created_at = models.DateField(auto_now_add=True)
     updated_at = models.DateField(auto_now=True)
-    
+
+
+
+class SasGallery(models.Model):
+    title = models.CharField(max_length=250, null=True, blank=True)
+    picture = models.FileField(upload_to='gallery/images', null=True, blank=True)
+    created_at = models.DateField(auto_now_add=True)
+    updated_at = models.DateField(auto_now=True)
