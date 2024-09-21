@@ -5,4 +5,7 @@ from sas import views as sas_views
 urlpatterns = [
     path('services/', sas_views.ServiceListCreateView.as_view(), name='service_list_create'),
     path('services/<int:pk>/', sas_views.ServiceDetailView.as_view(), name='service_detail'),
+
+    path('business_partners/', sas_views.BusinessPartnerListCreateAPIView.as_view(), name='business_partner_list_create'),
+    path('business_partners/<int:pk>/', sas_views.BusinessPartnerRetrieveUpdateDestroyAPIView.as_view(), name='business_partner_detail'),
 ]

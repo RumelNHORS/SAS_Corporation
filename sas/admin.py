@@ -19,3 +19,15 @@ class ServiceAdmin(admin.ModelAdmin):
         return 'No Image'
 
     icon_tag.short_description = 'Icon'
+
+
+@admin.register(sas_models.BusinessPartner)
+class BusinessPartnerAdmin(admin.ModelAdmin):
+    list_display = ['name', 'description', 'website_link', 'image_tag']
+
+    def image_tag(self, obj):
+        if obj.image:
+            return mark_safe(f'<img src="{obj.image.url}" width="50" height="50" />')
+        return 'No Image'
+    
+    image_tag.short_description = 'Image'

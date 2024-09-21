@@ -15,3 +15,17 @@ class ServiceListCreateView(generics.ListCreateAPIView):
 class ServiceDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = sas_models.Service.objects.all()
     serializer_class = sas_serializers.ServiceSerializer
+
+
+# List all BusinessPartners or create a new one
+class BusinessPartnerListCreateAPIView(generics.ListCreateAPIView):
+    queryset = sas_models.BusinessPartner.objects.all()
+    serializer_class = sas_serializers.BusinessPartnerSerializer
+    
+
+# Retrieve, update, or delete a specific BusinessPartner by ID
+class BusinessPartnerRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = sas_models.BusinessPartner.objects.all()
+    serializer_class = sas_serializers.BusinessPartnerSerializer
+
+
