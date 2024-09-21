@@ -8,4 +8,7 @@ urlpatterns = [
 
     path('business_partners/', sas_views.BusinessPartnerListCreateAPIView.as_view(), name='business_partner_list_create'),
     path('business_partners/<int:pk>/', sas_views.BusinessPartnerRetrieveUpdateDestroyAPIView.as_view(), name='business_partner_detail'),
+
+    path('projects/', sas_views.ProjectListCreateAPIView.as_view(), name='project_list_create'),
+    path('projects/<int:pk>/', sas_views.ProjectRetrieveUpdateDestroyAPIView.as_view(), name='project_detail')
 ]
