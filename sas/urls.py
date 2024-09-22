@@ -14,4 +14,10 @@ urlpatterns = [
 
     path('sas_gallery/', sas_views.SasGalleryListCreateAPIView.as_view(), name='sas_gallery_list_create'),
     path('sas_gallery/<int:pk>/', sas_views.SasGalleryRetrieveUpdateDestroyAPIView.as_view(), name='sas_gallery_detail'),
+
+    path('about_sas/', sas_views.AboutUsListCreateAPIView.as_view(), name='about_sas'),
+    path('about_sas/<int:pk>/', sas_views.AboutUsRetriveUpdateDestroyAPIView.as_view(), name='about_detail'),
+
+    path('sas_info/', sas_views.SasInfoListCreateListAPIView.as_view(), name='sas_info'),
+    path('sas_info/<int:pk>/', sas_views.SasInfoRetriveUpdateDestroyAPIIView.as_view(), name='sas_info_detail'),
 ]

@@ -51,3 +51,24 @@ class SasGalleryListCreateAPIView(generics.ListCreateAPIView):
 class SasGalleryRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = sas_models.SasGallery.objects.all()
     serializer_class = sas_serializers.SasGallerySerializer
+
+
+# About us View
+class AboutUsListCreateAPIView(generics.ListCreateAPIView):
+    queryset = sas_models.AboutUs.objects.all()
+    serializer_class = sas_serializers.AboutUsSerializer
+
+
+class AboutUsRetriveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = sas_models.AboutUs.objects.all()
+    serializer_class = sas_serializers.AboutUsSerializer
+
+
+class SasInfoListCreateListAPIView(generics.ListCreateAPIView):
+    queryset = sas_models.SasInfo.objects.all()
+    serializer_class = sas_serializers.SasInfoSerializer
+
+
+class SasInfoRetriveUpdateDestroyAPIIView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = sas_models.SasInfo.objects.all()
+    serializer_class = sas_serializers.SasInfoSerializer

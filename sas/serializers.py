@@ -25,3 +25,15 @@ class SasGallerySerializer(serializers.ModelSerializer):
     class Meta:
         model = sas_models.SasGallery
         fields = ['id', 'title', 'picture']
+
+
+class AboutUsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = sas_models.AboutUs
+        fields = ['id', 'title', 'description', 'image']
+
+
+class SasInfoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = sas_models.SasInfo
+        fields = ['id', 'address', 'facebook', 'instagram', 'linkedin', 'twitter', 'tiktok', 'pinterest']
