@@ -47,6 +47,9 @@ INSTALLED_APPS = [
     # New app
     'rest_framework',
     'sas',
+
+    'ckeditor',
+    'ckeditor_uploader',
 ]
 
 # Configure global settings for DRF
@@ -154,10 +157,20 @@ STATIC_URL = 'static/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
+CKEDITOR_UPLOAD_PATH = "uploads/"
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'allowedContent': True,  # Allow all content
+        'extraAllowedContent': 'h1[*];',  # Allow h1 tags (and other tags you want)
+        'toolbar': 'full',  # Use the full toolbar
+    },
+}
 
 
 

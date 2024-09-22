@@ -1,29 +1,54 @@
 from django.contrib import admin
-from django.utils.html import mark_safe
+from django.utils.html import mark_safe, strip_tags
+from django.utils.text import Truncator 
 from sas import models as sas_models
+from ckeditor.widgets import CKEditorWidget
+from django import forms
 
 # Register your models here.
 
-# @admin.register(sas_models.Service)
-# class ServiceAdmin(admin.ModelAdmin):
-#     list_display = ['icon', 'title', 'description']
+# Service Admin Form
+class ServiceAdminForm(forms.ModelForm):
+    description = forms.CharField(widget=CKEditorWidget())
 
+    class Meta:
+        model = sas_models.Service
+        fields = '__all__'
 
 @admin.register(sas_models.Service)
 class ServiceAdmin(admin.ModelAdmin):
-    list_display = ('title', 'description', 'icon_tag')
-    # Method to display the image in the admin list
+    form = ServiceAdminForm
+    list_display = ('title', 'short_description', 'icon_tag')
+
+    def short_description(self, obj):
+        plain_text = strip_tags(obj.description)
+        truncated_text = Truncator(plain_text).chars(50, truncate='...')
+        return truncated_text
+
     def icon_tag(self, obj):
         if obj.icon:
             return mark_safe(f'<img src="{obj.icon.url}" width="50" height="50" />')
         return 'No Image'
-
+    
     icon_tag.short_description = 'Icon'
 
+# BusinessPartner Admin Form
+class BusinessPartnerAdminForm(forms.ModelForm):
+    description = forms.CharField(widget=CKEditorWidget())
+
+    class Meta:
+        model = sas_models.BusinessPartner
+        fields = '__all__'
 
 @admin.register(sas_models.BusinessPartner)
 class BusinessPartnerAdmin(admin.ModelAdmin):
-    list_display = ['name', 'description', 'website_link', 'image_tag']
+    form = BusinessPartnerAdminForm
+    list_display = ['name', 'short_description', 'website_link', 'image_tag']
+    
+    def short_description(self, obj):
+        plain_text = strip_tags(obj.description)
+        truncated_text = Truncator(plain_text).chars(50, truncate='...')
+        return truncated_text
 
     def image_tag(self, obj):
         if obj.image:
@@ -33,9 +58,23 @@ class BusinessPartnerAdmin(admin.ModelAdmin):
     image_tag.short_description = 'Image'
 
 
+# Projects Admin Form
+class ProjectsAdminForm(forms.ModelForm):
+    description = forms.CharField(widget=CKEditorWidget())
+
+    class Meta:
+        model = sas_models.Projects
+        fields = '__all__'
+
 @admin.register(sas_models.Projects)
 class ProjectsAdmin(admin.ModelAdmin):
-    list_display = ['project_name', 'description', 'project_link', 'image_tag']
+    form = ProjectsAdminForm
+    list_display = ['project_name', 'short_description', 'project_link', 'image_tag']
+
+    def short_description(self, obj):
+        plain_text = strip_tags(obj.description)
+        truncated_text = Truncator(plain_text).chars(50, truncate='...')
+        return truncated_text
 
     def image_tag(self, obj):
         if obj.project_image:
@@ -56,12 +95,26 @@ class SasGalleryAdmin(admin.ModelAdmin):
     image_tag.short_description = 'Gallery Image'
 
 admin.site.register(sas_models.WebPrimaryColor)
-admin.site.register(sas_models.SasInfo)
+# admin.site.register(sas_models.SasInfo)
 
+
+# AboutUs Admin Form
+class AboutUsAdminForm(forms.ModelForm):
+    description = forms.CharField(widget=CKEditorWidget())
+
+    class Meta:
+        model = sas_models.AboutUs
+        fields = '__all__'
 
 @admin.register(sas_models.AboutUs)
 class AboutUsAdmin(admin.ModelAdmin):
-    list_display = ['title', 'description', 'image_tag']
+    form = AboutUsAdminForm
+    list_display = ['title', 'short_description', 'image_tag']
+
+    def short_description(self, obj):
+        plain_text = strip_tags(obj.description)
+        truncated_text = Truncator(plain_text).chars(50, truncate='...')
+        return truncated_text
 
     def image_tag(self, obj):
         if obj.image:
@@ -70,4 +123,27 @@ class AboutUsAdmin(admin.ModelAdmin):
     
     image_tag.short_description = 'About Image'
 
+class SasInfoAdminForm(forms.ModelForm):
+    address = forms.CharField(widget=CKEditorWidget())
 
+    class Meta:
+        model = sas_models.SasInfo
+        fields = '__all__'
+
+class SasInfoAdmin(admin.ModelAdmin):
+    form = SasInfoAdminForm
+    list_display = ['formatted_address']
+
+    def formatted_address(self, obj):
+        plain_text = strip_tags(obj.address)
+        truncated_text = Truncator(plain_text).chars(50, truncate='...')
+        return truncated_text
+
+    formatted_address.short_description = 'Address'
+
+    def Address(self, obj):
+        plain_text = strip_tags(obj.address)
+        truncated_text = Truncator(plain_text).chars(50, truncate='...')
+        return truncated_text
+
+admin.site.register(sas_models.SasInfo, SasInfoAdmin)
