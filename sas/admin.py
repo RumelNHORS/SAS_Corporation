@@ -56,4 +56,18 @@ class SasGalleryAdmin(admin.ModelAdmin):
     image_tag.short_description = 'Gallery Image'
 
 admin.site.register(sas_models.WebPrimaryColor)
+admin.site.register(sas_models.SasInfo)
+
+
+@admin.register(sas_models.AboutUs)
+class AboutUsAdmin(admin.ModelAdmin):
+    list_display = ['title', 'description', 'image_tag']
+
+    def image_tag(self, obj):
+        if obj.image:
+            return mark_safe(f'<img src="{obj.image.url}" width="50" height="50" />')
+        return 'No Image'
     
+    image_tag.short_description = 'About Image'
+
+

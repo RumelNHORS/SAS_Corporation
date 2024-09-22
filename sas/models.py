@@ -42,3 +42,24 @@ class SasGallery(models.Model):
 
 class WebPrimaryColor(models.Model):
     color_code = models.CharField(max_length=150, null=True, blank=True)
+
+
+#About Us Model
+class AboutUs(models.Model):
+    title = models.CharField(max_length=220, null=True, blank=True)
+    description = models.TextField()
+    image = models.FileField(upload_to='about/images', null=True, blank=True)
+
+
+class SasInfo(models.Model):
+    address = models.CharField(max_length=255)
+    facebook = models.URLField(max_length=200, blank=True, null=True)
+    instagram = models.URLField(max_length=200, blank=True, null=True)
+    linkedin = models.URLField(max_length=200, blank=True, null=True)
+    twitter = models.URLField(max_length=200, blank=True, null=True)
+    tiktok = models.URLField(max_length=200, blank=True, null=True)
+    pinterest = models.URLField(max_length=200, blank=True, null=True)
+
+    def __str__(self):
+        return self.address
+    
