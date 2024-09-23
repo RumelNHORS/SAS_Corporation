@@ -65,3 +65,17 @@ class SasInfo(models.Model):
     def __str__(self):
         return self.address
     
+
+class Testimonial(models.Model):
+    name = models.CharField(max_length=250)
+    designation = models.CharField(max_length=250, blank=True, null=True)
+    message = RichTextField(blank=True, null=True)
+    image = models.FileField(upload_to='testimonials/', blank=True, null=True)
+    created_at = models.DateField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.name} - {self.designation if self.designation else 'Anonymous'}"
+    
+
+class OurClient(models.Model):
+    image = models.FileField(upload_to='our_clients/', null=True, blank=True)

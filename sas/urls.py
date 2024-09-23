@@ -20,4 +20,7 @@ urlpatterns = [
 
     path('sas_info/', sas_views.SasInfoListCreateListAPIView.as_view(), name='sas_info'),
     path('sas_info/<int:pk>/', sas_views.SasInfoRetriveUpdateDestroyAPIIView.as_view(), name='sas_info_detail'),
+
+    path('testimonials/', sas_views.TestimonialListCreateView.as_view(), name='testimonial_list_create'),
+    path('testimonials/<int:pk>/', sas_views.TestimonialRetrieveUpdateDestroyView.as_view(), name='testimonial_detail'),
 ]

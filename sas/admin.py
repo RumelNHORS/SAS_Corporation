@@ -7,6 +7,8 @@ from django import forms
 
 # Register your models here.
 
+admin.site.register(sas_models.OurClient)
+
 # Service Admin Form
 class ServiceAdminForm(forms.ModelForm):
     description = forms.CharField(widget=CKEditorWidget())
@@ -147,3 +149,28 @@ class SasInfoAdmin(admin.ModelAdmin):
         return truncated_text
 
 admin.site.register(sas_models.SasInfo, SasInfoAdmin)
+
+
+class TestimonialAdminForm(forms.ModelForm):
+    message = forms.CharField(widget=CKEditorWidget())
+
+    class Meta:
+        model = sas_models.Testimonial
+        fields = '__all__'
+
+@admin.register(sas_models.Testimonial)
+class TestimonialAdmin(admin.ModelAdmin):
+    form = TestimonialAdminForm
+    list_display = ['name', 'designation', 'formatted_message', 'image_tag']
+
+    def formatted_message(self, obj):
+        plain_text = strip_tags(obj.message)
+        truncated_text = Truncator(plain_text).chars(50, truncate='...')
+        return truncated_text
+    
+    def image_tag(self, obj):
+        if obj.image:
+            return mark_safe(f'<img src="{obj.image.url}" width="50" height="50" />')
+        return 'No Image'
+    
+    image_tag.short_description = 'Testimonial Image'

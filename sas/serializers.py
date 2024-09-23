@@ -1,5 +1,7 @@
 from rest_framework import serializers
 from sas import models as sas_models
+from django.utils.html import strip_tags
+import html
 
 
 
@@ -34,6 +36,18 @@ class AboutUsSerializer(serializers.ModelSerializer):
 
 
 class SasInfoSerializer(serializers.ModelSerializer):
+    clean_message = serializers.SerializerMethodField()
     class Meta:
         model = sas_models.SasInfo
         fields = ['id', 'address', 'facebook', 'instagram', 'linkedin', 'twitter', 'tiktok', 'pinterest']
+
+    def get_clean_message(self, obj):
+        # Strip any HTML tags from the message
+        clean_message = strip_tags(obj.message)
+        return html.unescape(clean_message)
+
+
+class TestimonialSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = sas_models.Testimonial
+        fields = ['id', 'name', 'designation', 'message', 'image', 'created_at']

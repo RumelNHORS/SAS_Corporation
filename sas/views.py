@@ -72,3 +72,16 @@ class SasInfoListCreateListAPIView(generics.ListCreateAPIView):
 class SasInfoRetriveUpdateDestroyAPIIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = sas_models.SasInfo.objects.all()
     serializer_class = sas_serializers.SasInfoSerializer
+
+
+# List all testimonials and create a new one
+class TestimonialListCreateView(generics.ListCreateAPIView):
+    queryset = sas_models.Testimonial.objects.all()
+    serializer_class = sas_serializers.TestimonialSerializer
+
+
+# Retrieve, update, or delete a specific testimonial
+class TestimonialRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = sas_models.Testimonial.objects.all()
+    serializer_class = sas_serializers.TestimonialSerializer
+    
