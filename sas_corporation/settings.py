@@ -50,6 +50,7 @@ INSTALLED_APPS = [
 
     'ckeditor',
     'ckeditor_uploader',
+    'corsheaders',
 ]
 
 # Configure global settings for DRF
@@ -65,6 +66,8 @@ REST_FRAMEWORK = {
 
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -166,12 +169,28 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CKEDITOR_CONFIGS = {
     'default': {
-        'allowedContent': True,  # Allow all content
-        'extraAllowedContent': 'h1[*];',  # Allow h1 tags (and other tags you want)
-        'toolbar': 'full',  # Use the full toolbar
+        'allowedContent': True, 
+        'extraAllowedContent': 'h1[*];',
+        'toolbar': 'full',
     },
 }
 
+
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:5173',
+    'http://127.0.0.1:5173',
+    # 'https://sascorporationbd.com/',
+]
+CORS_ALLOW_ALL_ORIGINS = True
+
+CORS_ALLOW_METHODS = [
+    'GET',
+    'POST',
+    'PUT',
+    'PATCH',
+    'DELETE',
+    'OPTIONS',
+]
 
 
 # Jazzmin Config
