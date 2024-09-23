@@ -23,4 +23,7 @@ urlpatterns = [
 
     path('testimonials/', sas_views.TestimonialListCreateView.as_view(), name='testimonial_list_create'),
     path('testimonials/<int:pk>/', sas_views.TestimonialRetrieveUpdateDestroyView.as_view(), name='testimonial_detail'),
+
+    path('our_clients/', sas_views.OurClientListCreateView.as_view(), name='our_client_list_create'),
+    path('our_clients/<int:pk>/', sas_views.OurClientRetrieveUpdateDestroyView.as_view(), name='our_client_detail'),
 ]

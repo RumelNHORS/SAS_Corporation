@@ -51,3 +51,9 @@ class TestimonialSerializer(serializers.ModelSerializer):
     class Meta:
         model = sas_models.Testimonial
         fields = ['id', 'name', 'designation', 'message', 'image', 'created_at']
+
+
+class OurClientSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = sas_models.OurClient
+        fields = ['id', 'image']

@@ -84,4 +84,15 @@ class TestimonialListCreateView(generics.ListCreateAPIView):
 class TestimonialRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
     queryset = sas_models.Testimonial.objects.all()
     serializer_class = sas_serializers.TestimonialSerializer
-    
+
+
+# List all clients and create a new one
+class OurClientListCreateView(generics.ListCreateAPIView):
+    queryset = sas_models.OurClient.objects.all()
+    serializer_class = sas_serializers.TestimonialSerializer
+    serializer_class = sas_serializers.OurClientSerializer
+
+# Retrieve, update, or delete a specific client
+class OurClientRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = sas_models.OurClient.objects.all()
+    serializer_class = sas_serializers.OurClientSerializer
