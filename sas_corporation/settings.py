@@ -31,6 +31,7 @@ SECRET_KEY = 'django-insecure-6380p)zp=y1-2escwufaa-k_ajqc4(w&)-*pc91#7-q7wf1(#h
 DEBUG = True
 
 ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = ['sascorporationbd.com', 'www.sascorporationbd.com']
 
 
 # Application definition
@@ -156,6 +157,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
@@ -199,11 +201,11 @@ JAZZMIN_SETTINGS = {
     "site_name": "SAS Corporation",
     "site_header": "SAS Corporation",
     "site_brand": "SAS Corporation",
-    "site_logo": "images/favicon.png",
+    "site_logo": "images/sas-corporation.jpg",
     "welcome_sign": "Welcome to SAS Corporation",
     # "copyright": "All Rights Reserved 2023 || SAS Corporation",
 
-    "site_icon": "images/favicon.png",
+    "site_icon": "images/sas-corporation.jpg",
     # Add your own branding here
     # Copyright on the footer
     # "user_avatar": None,
