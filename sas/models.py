@@ -79,3 +79,15 @@ class Testimonial(models.Model):
 
 class OurClient(models.Model):
     image = models.FileField(upload_to='our_clients/', null=True, blank=True)
+
+
+# Our Team Model
+class OurTeam(models.Model):
+    name = models.CharField(max_length=250)
+    designation = models.CharField(max_length=250)
+    picture = models.FileField(upload_to='team/', null=True, blank=True)
+    facebook = models.URLField(max_length=250, null=True, blank=True)
+    linkedin = models.URLField(max_length=250, null=True, blank=True)
+    twitter = models.URLField(max_length=250, null=True, blank=True)
+    github = models.URLField(max_length=250, null=True, blank=True)
+    
