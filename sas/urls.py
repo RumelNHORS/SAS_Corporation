@@ -26,4 +26,8 @@ urlpatterns = [
 
     path('our_clients/', sas_views.OurClientListCreateView.as_view(), name='our_client_list_create'),
     path('our_clients/<int:pk>/', sas_views.OurClientRetrieveUpdateDestroyView.as_view(), name='our_client_detail'),
+
+    path('our_team/', sas_views.OurTeamListCreateView.as_view(), name='our_team'),
+    path('our_team/<int:pk>/', sas_views.OurTeamRetrieveUpdateDestroyView.as_view(), name='our_team_details'),
+    
 ]

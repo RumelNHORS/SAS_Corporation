@@ -103,3 +103,7 @@ class OurTeamListCreateView(generics.ListCreateAPIView):
     queryset = sas_models.OurTeam.objects.all()
     serializer_class = sas_serializers.OurTeamSerializer
 
+
+class OurTeamRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = sas_models.OurTeam.objects.all()
+    serializer_class = sas_serializers.OurTeamSerializer
