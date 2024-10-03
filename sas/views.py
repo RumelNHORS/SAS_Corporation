@@ -89,10 +89,17 @@ class TestimonialRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView
 # List all clients and create a new one
 class OurClientListCreateView(generics.ListCreateAPIView):
     queryset = sas_models.OurClient.objects.all()
-    serializer_class = sas_serializers.TestimonialSerializer
+    # serializer_class = sas_serializers.TestimonialSerializer
     serializer_class = sas_serializers.OurClientSerializer
 
 # Retrieve, update, or delete a specific client
 class OurClientRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
     queryset = sas_models.OurClient.objects.all()
     serializer_class = sas_serializers.OurClientSerializer
+
+
+# View for OurTeam
+class OurTeamListCreateView(generics.ListCreateAPIView):
+    queryset = sas_models.OurTeam.objects.all()
+    serializer_class = sas_serializers.OurTeamSerializer
+
