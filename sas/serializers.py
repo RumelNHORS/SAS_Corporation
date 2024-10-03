@@ -68,5 +68,5 @@ class OurTeamSerializer(serializers.ModelSerializer):
 # Our IT/Criticism
 class OurITSectionSerializer(serializers.ModelSerializer):
     class Meta:
-        Model = sas_models.OurITSection
+        model = sas_models.OurITSection
         fields = '__all__'
