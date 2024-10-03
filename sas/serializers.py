@@ -57,3 +57,9 @@ class OurClientSerializer(serializers.ModelSerializer):
     class Meta:
         model = sas_models.OurClient
         fields = ['id', 'image']
+
+# Our Team Serializer
+class OurTeamSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = sas_models.OurTeam
+        fields = '__all__'

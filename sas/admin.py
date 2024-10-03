@@ -174,3 +174,5 @@ class TestimonialAdmin(admin.ModelAdmin):
         return 'No Image'
     
     image_tag.short_description = 'Testimonial Image'
+
+admin.site.register(sas_models.OurTeam)
