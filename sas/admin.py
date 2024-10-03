@@ -176,3 +176,30 @@ class TestimonialAdmin(admin.ModelAdmin):
     image_tag.short_description = 'Testimonial Image'
 
 admin.site.register(sas_models.OurTeam)
+
+
+class OurITCriticismAdminForm(forms.ModelForm):
+    criticism = forms.CharField(widget=CKEditorWidget())
+
+    class Meta:
+        model = sas_models.OurITSection
+        fields = '__all__'
+
+class OurITCriticismAdmin(admin.ModelAdmin):
+    form = OurITCriticismAdminForm
+    list_display = ['formated_criticism', 'image_tag']
+
+    def formated_criticism(self, obj):
+        plain_text = strip_tags(obj.criticism)
+        truncated_text = Truncator(plain_text).chars(50, truncate='...')
+        return truncated_text        
+
+    def image_tag(self, obj):
+        if obj.image:
+            return mark_safe(f'<img src="{obj.image.url}" width="50" height="50" />')
+        return 'No Image'
+    
+    image_tag.short_description = 'Criticism Image'
+
+# Register the model and admin class properly
+admin.site.register(sas_models.OurITSection, OurITCriticismAdmin)
