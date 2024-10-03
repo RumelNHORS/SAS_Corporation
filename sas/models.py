@@ -90,4 +90,8 @@ class OurTeam(models.Model):
     linkedin = models.URLField(max_length=250, null=True, blank=True)
     twitter = models.URLField(max_length=250, null=True, blank=True)
     github = models.URLField(max_length=250, null=True, blank=True)
-    
+
+
+class OurITSection(models.Model):
+    criticism = RichTextField(blank=True, null=True)
+    image = models.FileField(upload_to='criticism/', null=True, blank=True)
